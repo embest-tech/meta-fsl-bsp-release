@@ -9,7 +9,7 @@ INC_PR = "r1"
 
 inherit fsl-eula-unpack autotools pkgconfig
 
-SRC_URI = "${MPU_INTERNAL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
+SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
 
 python populate_packages_prepend() {
     # FIXME: All binaries lack GNU_HASH in elf binary but as we don't have

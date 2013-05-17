@@ -12,7 +12,7 @@ INC_PR = "r6"
 
 inherit fsl-eula-unpack
 
-SRC_URI = "${MPU_INTERNAL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true \
+SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true \
            file://0001-change-header-path-to-HAL.patch \
            file://gc_hal_eglplatform-remove-xlib-undefs.patch \
            file://fix-conflicting-TLS-definition.patch \

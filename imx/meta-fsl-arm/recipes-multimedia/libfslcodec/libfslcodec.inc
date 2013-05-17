@@ -9,7 +9,7 @@ INC_PR = "r1"
 
 inherit fsl-eula-unpack autotools pkgconfig
 
-SRC_URI = "${MPU_INTERNAL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
+SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
 
 PACKAGES_DYNAMIC = "${PN}-*"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"

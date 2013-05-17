@@ -10,9 +10,9 @@ PE = "2"
 
 inherit autotools pkgconfig
 
-SRC_URI = "${MPU_INTERNAL_MIRROR}/${PN}-${PV}.tar.gz"
-SRC_URI[md5sum] = "6d42f2bc8592c03ba65fe78ef2679c68"
-SRC_URI[sha256sum] = "15f5595090ebf84d745610db7cfa7316aba6041499f479a27d593cdde896b111"
+SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.tar.gz"
+SRC_URI[md5sum] = "9fd7718914b0339218c4939da7483d93"
+SRC_URI[sha256sum] = "91bcf78611c5fad15a05752c5f5c9873c2bf67fb2bb5839b173ad7bec522ca3b"
 
 do_install_append() {
 	# FIXME: Drop examples

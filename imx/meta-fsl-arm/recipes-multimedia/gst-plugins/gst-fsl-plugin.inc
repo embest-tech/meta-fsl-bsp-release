@@ -15,7 +15,7 @@ PACKAGE_NAME ?= "${PN}"
 
 S = "${WORKDIR}/${PACKAGE_NAME}-${PV}"
 
-SRC_URI = "${MPU_INTERNAL_MIRROR}/${PACKAGE_NAME}-${PV}.tar.gz"
+SRC_URI = "${FSL_MIRROR}/${PACKAGE_NAME}-${PV}.tar.gz"
 
 inherit autotools pkgconfig
 
