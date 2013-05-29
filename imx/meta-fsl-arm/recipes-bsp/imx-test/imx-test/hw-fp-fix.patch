@@ -1,0 +1,42 @@
+diff --git a/test/ar3k_bt/Makefile b/test/ar3k_bt/Makefile
+index 242952d..b6c71d5 100755
+--- a/test/ar3k_bt/Makefile
++++ b/test/ar3k_bt/Makefile
+@@ -13,13 +13,13 @@ else
+ OBJS =
+ endif
+ 
+-all : $(OBJS)
++#all : $(OBJS)
++
++#.PHONY: clean
++#clean:
++#	rm -f $(OBJS)
+ 
+-.PHONY: clean
+-clean:
+-	rm -f $(OBJS)
+ 
+-include ../make.rules
+ 
+ 
+ # If you want to compile the source code, please reference follow make file.
+@@ -28,10 +28,12 @@ include ../make.rules
+ 
+ #CC := gcc
+ 
+-#all: hciattach-ar3k
++all: hciattach-ar3k
+ 
+-#hciattach-ar3k:
+-#	$(CC) -Wall -lbluetooth -g hciattach_ath3k.c  hciattach.c  hciattach_qualcomm.c  hciattach_st.c  hciattach_tialt.c  hciattach_ti.c -o hciattach-ar3k
++hciattach-ar3k :
++	$(CC) -Wall -lbluetooth -g hciattach_ath3k.c  hciattach.c  hciattach_qualcomm.c  hciattach_st.c  hciattach_tialt.c  hciattach_ti.c -o hciattach-ar3k
+ 
+-#clean:
+-#	rm -f hciattach-ar3k *.o
++clean:
++	rm -f hciattach-ar3k *.o hciattach-ar3k.bin
++
++include ../make.rules
+\ No newline at end of file
