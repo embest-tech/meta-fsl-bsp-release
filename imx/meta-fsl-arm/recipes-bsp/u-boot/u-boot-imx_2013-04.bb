@@ -17,3 +17,6 @@ S = "${WORKDIR}/git"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
+## fix uboot machine for mx6 DL since it got changed from 2009.08 release
+UBOOT_MACHINE_mx6dl = "mx6dlsabresd_config"
+
