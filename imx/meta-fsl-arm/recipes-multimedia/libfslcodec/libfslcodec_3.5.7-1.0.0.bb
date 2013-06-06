@@ -6,8 +6,8 @@ require libfslcodec.inc
 PR = "${INC_PR}.0"
 PE = "2"
 
-SRC_URI[md5sum] = "600006315fa6b362ad6b1f7cf9c9d4bd"
-SRC_URI[sha256sum] = "6e4ffc690177608a99e2140e1bee72a6f1fe150acee46163e6aebe547a373a2d"
+SRC_URI[md5sum] = "ca71dddf6fe6877a6c7fbe99bbb41099"
+SRC_URI[sha256sum] = "e9a060254b1a0a5d24c6601210095edaa702ea9c7ec9329aca1d3842de04bee2"
 
 
 COMPATIBLE_MACHINE = "(mx6)"

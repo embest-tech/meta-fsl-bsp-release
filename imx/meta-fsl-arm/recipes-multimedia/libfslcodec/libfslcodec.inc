@@ -14,46 +14,35 @@ SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
 PACKAGES_DYNAMIC = "${PN}-*"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
+FLOATING_POINT_SEL ?= ""
+FLOATING_POINT_SEL = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '--enable-fhw', '', d)}"
+EXTRA_OECONF = "${FLOATING_POINT_SEL}"
+
 do_install_append() {
 	# FIXME: This link points to nowhere
 	rm ${D}${libdir}/imx-mm/audio-codec/lib_src_ppp_arm11_elinux.so
 
 	# LTIB move the files around or gst-fsl-plugin won't find them
-	for p in $(find ${D}${libdir}/imx-mm -mindepth 1 -maxdepth 1 -type d); do
-		mv $p/* ${D}${libdir}
-#	rmdir $p
+	for p in $(find ${D}${libdir}/imx-mm -mindepth 2 -maxdepth 2 -not -type d); do
+		mv $p ${D}${libdir}
 	done
-	mv ${D}${libdir}/wrap ${D}${libdir}/imx-mm/audio-codec
 	rmdir ${D}${libdir}/imx-mm/video-codec
 
 	# FIXME: Drop examples
-	rm -r ${D}${datadir}/imx-mm
+#	rm -r ${D}${datadir}/imx-mm
 }
 
 python populate_packages_prepend() {
-    do_split_packages(d, d.getVar('libdir', True), '^lib_(.*)_elinux\.so\..*',
-                      aux_files_pattern_verbatim='${libdir}/lib_%s_elinux.so.*',
-                      output_pattern='libfslcodec-audio-%s',
-                      description='Freescale IMX Codec (%s)',
-                      extra_depends='', prepend=True)
-
-    wrapdir = bb.data.expand('${libdir}/imx-mm/audio-codec/wrap', d)
-    do_split_packages(d, wrapdir, '^lib_(.*)_elinux\.so\..*',
-                      aux_files_pattern_verbatim='${libdir}/imx-mm/audio-codec/wrap/lib_%s_elinux.so.*',
-                      output_pattern='libfslcodec-audio-wrap-%s',
-                      description='Freescale IMX Codec Wrap (%s)',
-                      extra_depends='', prepend=True)
-
     # FIXME: All binaries lack GNU_HASH in elf binary but as we don't have
     # the source we cannot fix it. Disable the insane check for now.
+    # FIXME: gst-fsl-plugin looks for the .so files so we need to deploy those
     for p in d.getVar('PACKAGES', True).split():
-        d.setVar("INSANE_SKIP_%s" % p, "ldflags textrel")
+        d.setVar("INSANE_SKIP_%s" % p, "ldflags textrel dev-so")
 }
 
-# Ensure we get warnings if we miss something
-FILES_${PN} += "${libdir}/imx-mm/audio-codec/wrap/*${SOLIBS}"
 
-FILES_${PN}-dev += "${libdir}/imx-mm/audio-codec/wrap/*${SOLIBSDEV} \
-                    ${libdir}/imx-mm/audio-codec/wrap/*${SOLIBSDEV}"
+# Ensure we get warnings if we miss something
+FILES_${PN} += "${libdir}/*${SOLIBSDEV} ${libdir}/imx-mm/audio-codec/wrap/*${SOLIBS} ${libdir}/imx-mm/audio-codec/wrap/*${SOLIBSDEV}"
+FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc ${includedir}/imx-mm/* ${datadir}/imx-mm/*"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
