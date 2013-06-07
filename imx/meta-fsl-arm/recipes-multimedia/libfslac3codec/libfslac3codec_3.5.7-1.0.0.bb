@@ -6,6 +6,7 @@ DESCRIPTION = "This package provides AC3 decoder library and uses"
 LICENSE = "FSL-mm-excluded-codec"
 LICENSE_FLAGS = "license_${PN}-${PV}"
 #LICENSE = "Proprietary"
+DEPENDS = "libfslcodec"
 
 SECTION = "multimedia"
 

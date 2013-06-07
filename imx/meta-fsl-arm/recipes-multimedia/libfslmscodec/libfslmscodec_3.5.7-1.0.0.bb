@@ -6,6 +6,7 @@ DESCRIPTION = "Microsoft component library, including WMA and WMV789 decoder lib
 LICENSE = "FSL-mm-special-codec"
 LICENSE_FLAGS = "license_${PN}-${PV}"
 #LICENSE = "Proprietary"
+DEPENDS = "libfslcodec"
 
 SECTION = "multimedia"
 
