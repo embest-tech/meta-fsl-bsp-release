@@ -14,7 +14,7 @@ SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git;${FSL_ARM_
 
 SRCREV = "${FSL_ARM_RELEASE_TAG}"
 
-LOCALVERSION = "-3.5.7+yocto"
+LOCALVERSION = "-1.0.0"
 
 # We need to pass it as param since kernel might support more then one
 # machine, with different entry points
