@@ -27,3 +27,6 @@ do_configure_prepend() {
 }
 
 
+## add the Device tree for DL and SL
+KERNEL_DEVICETREE_mx6dl = "${S}/arch/arm/boot/dts/imx6q-sabrelite.dts"
+KERNEL_DEVICETREE_mx6sl = "${S}/arch/arm/boot/dts/imx6q-sabrelite.dts"
