@@ -35,9 +35,13 @@ clean_up()
 ARM_DIR=`readlink -f ${BASH_SOURCE[0]}`
 ARM_DIR=`dirname $ARM_DIR`
 
-META_FSL_BSP_RELEASE="${ARM_DIR}/sources/meta-fsl-bsp-release/imx"
+META_FSL_BSP_RELEASE="${ARM_DIR}/sources/meta-fsl-bsp-release/imx/meta-fsl-arm"
 echo "##Freescale Yocto Release layer" >> build/conf/bblayers.conf
 echo "BBLAYERS += \"${META_FSL_BSP_RELEASE}\"" >> build/conf/bblayers.conf
+
+META_FSL_BSP_RELEASE="${ARM_DIR}/sources/meta-fsl-bsp-release/imx/meta-fsl-demos"
+echo "BBLAYERS += \"${META_FSL_BSP_RELEASE}\"" >> build/conf/bblayers.conf
+
 
 # setup external build servers
 echo "# Freescale Build servers" >> build/conf/local.conf
