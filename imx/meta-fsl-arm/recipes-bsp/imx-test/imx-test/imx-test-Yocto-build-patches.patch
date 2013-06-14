@@ -1,10 +1,21 @@
-From 5cde40dffdd607e7a0f4c491f8e247bf85b5452d Mon Sep 17 00:00:00 2001
+From d20ee839ea71c15253682666f3bcf6964caaf995 Mon Sep 17 00:00:00 2001
 From: Lauren Post <lauren.post@freescale.com>
-Date: Tue, 4 Jun 2013 11:53:35 -0500
-Subject: [PATCH] imx-test Yocto build patches Signed-off-by: Lauren Post
- <lauren.post@freescale.com>
+Date: Thu, 13 Jun 2013 09:19:50 -0500
+Subject: [PATCH]     imx-test fixes for breaks in makefiles unsupported in
+ Yocto build environment
 
+    IMX-test recipes fixes to support finding kernel headers and patch to fix makefiles that break yocto build environment.
+    The patch should be removed later when it is incorporated into linux-test but is provided now for testing out of daily build.
+
+    Fixes in makefiles to ifdef out yocto changes
+    Fixes in components not supported in 3.5.7 for IMX6 because of missing headers so exclude mmc, pf, pmic, rng, rtc, sahara, scc
+    Fix makefiles ar3k, vpu, als
+    Fix code in memtool
+    Fix module makefile to remove epdc and complete build
+
+Signed-off-by: Lauren Post <lauren.post@freescale.com>
 ---
+ module_test/Makefile            |    5 +++++
  test/Makefile                   |    2 ++
  test/ar3k_bt/Makefile           |   22 +++++++---------------
  test/make.rules                 |    6 +++++-
@@ -12,8 +23,6 @@ Subject: [PATCH] imx-test Yocto build patches Signed-off-by: Lauren Post
  test/memtool/Makefile           |    8 +++++++-
  test/memtool/memtool.c          |    2 ++
  test/mxc_als_test/Makefile      |    2 +-
- test/mxc_asrc_test/Makefile     |    2 +-
- test/mxc_mlb_test/Makefile      |    2 +-
  test/mxc_mmc_test/Makefile      |    2 +-
  test/mxc_pf_test/Makefile       |    2 +-
  test/mxc_pmic_test/Makefile     |    2 +-
@@ -23,8 +32,33 @@ Subject: [PATCH] imx-test Yocto build patches Signed-off-by: Lauren Post
  test/mxc_scc/Makefile           |    2 +-
  test/mxc_scc2/Makefile          |    2 +-
  test/mxc_vpu_test/Makefile      |    6 ++++++
- 18 files changed, 46 insertions(+), 29 deletions(-)
+ 18 files changed, 50 insertions(+), 28 deletions(-)
 
+diff --git a/module_test/Makefile b/module_test/Makefile
+index cb75eac..48781d0 100644
+--- a/module_test/Makefile
++++ b/module_test/Makefile
+@@ -19,8 +19,10 @@ ifeq ($(CONFIG_MXC_SDMA_API),y)
+ module_list-y += mxc_sdma_mem_test.o
+ endif
+ ifeq ($(CONFIG_FB_MXC_EINK_PANEL),y)
++ifeq ($(YOCTO_BUILD),0)
+ module_list-y += epdc_test_driver.o
+ endif
++endif
+ ifeq ($(CONFIG_FB_MXC_SIPIX_PANEL),y)
+ module_list-y += spdc_test_driver.o
+ endif
+@@ -53,6 +55,9 @@ EXTRA_CFLAGS := -DLINUX_KERNEL -DIMX_NEEDS_DEPRECATED_SYMBOLS
+ ##       source.
+ EXTRA_CFLAGS += -I$(LINUXPATH)/drivers/mxc/security -I$(LINUXPATH)/drivers/mxc/security/rng/include -I$(LINUXPATH)/drivers/mxc/security/sahara2/include
+ 
++all: obj-m
++	$(MAKE) -C $(LINUXPATH) M=`pwd` KBUILD_OUTPUT=$(KBUILD_OUTPUT) ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE)  obj-j
++
+ else
+ 
+ # Need to remove sahara objects because the test app uses same objects
 diff --git a/test/Makefile b/test/Makefile
 index 8c77c3c..0a28992 100644
 --- a/test/Makefile
@@ -179,32 +213,6 @@ index 56aaf8a..ece8207 100644
  
  ifeq (,$(findstring $(PLATFORM), $(EXCLUDE_LIST)))
  OBJS = $(OBJDIR)/mxc_isl29023.out
-diff --git a/test/mxc_asrc_test/Makefile b/test/mxc_asrc_test/Makefile
-index 42554d3..cffda39 100644
---- a/test/mxc_asrc_test/Makefile
-+++ b/test/mxc_asrc_test/Makefile
-@@ -2,7 +2,7 @@
- # Makefile for OSS sound driver test app.
- #
- # list of platforms which did not want this test case
--EXCLUDE_LIST:= IMX21ADS IMX27ADS IMX31ADS IMX32ADS IMX37_3STACK IMX25_3STACK
-+EXCLUDE_LIST:= IMX21ADS IMX27ADS IMX31ADS IMX32ADS IMX37_3STACK IMX25_3STACK IMX6Q
- 
- CFLAGS += -lpthread
- 
-diff --git a/test/mxc_mlb_test/Makefile b/test/mxc_mlb_test/Makefile
-index 34b442a..6c81f39 100644
---- a/test/mxc_mlb_test/Makefile
-+++ b/test/mxc_mlb_test/Makefile
-@@ -2,7 +2,7 @@
- # Makefile for MediaLB driver test app.
- #
- # list of platforms which did not want this test case
--EXCLUDE_LIST:= IMX21ADS IMX27ADS IMX31ADS IMX32ADS IMX37_3STACK IMX25_3STACK
-+EXCLUDE_LIST:= IMX21ADS IMX27ADS IMX31ADS IMX32ADS IMX37_3STACK IMX25_3STACK IMX6Q
- 
- INC += -I$(LINUXPATH)/include
- 
 diff --git a/test/mxc_mmc_test/Makefile b/test/mxc_mmc_test/Makefile
 index 02e5b21..1c630c3 100644
 --- a/test/mxc_mmc_test/Makefile
@@ -333,4 +341,6 @@ index a3a38c9..385e643 100644
  	mkdir -p $(OBJDIR)
  	mv $(TARGET) $(OBJDIR)
  	cp autorun-vpu.sh $(OBJDIR)
+-- 
+1.7.5.4
 

@@ -3,17 +3,12 @@ require recipes-bsp/imx-test/imx-test.inc
 PR = "${INC_PR}.0"
 PE = "1"
 
-SRC_URI[md5sum] = "17ab2bda23b09c9b150842e0f606fc7d"
-SRC_URI[sha256sum] = "cbcf77c431dcbfbbd7e816a0d9aa5b79dd52f7cb8f7c5aad723efc3a5ed5ee67"
+SRC_URI[md5sum] = "6a93f6321a2cdda15242ff296823c0e2"
+SRC_URI[sha256sum] = "0bea2388e302395814bbe8a3675fa87f6d99e403f7d4d4f9d01c7af48c1ce730"
 
 SRC_URI += "file://imx-test-Yocto-build-patches.patch"
 
 COMPATIBLE_MACHINE = "(mx6)"
-
-## fix for hardware floating point - make sure this file is deleted
-do_configure_prepend() {
-	rm test/ar3k_bt/hciattach-ar3k.bin
-}
 
 do_compile() {
         INCLUDE_DIR="-I${STAGING_INCDIR}  -I${STAGING_KERNEL_DIR}/include -I${WORKDIR}/git/include \
