@@ -2,21 +2,21 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 PR = "${INC_PR}.0"
-PE = "0"
+PE = "1"
 
 require recipes-graphics/gpu-viv-bin-mx6q/gpu-viv-bin-mx6q.inc
 
 LIC_FILES_CHKSUM = "file://usr/include/gc_vdk.h;endline=11;md5=19f5925343fa3da65596eeaa4ddb5fd3"
 
-SRC_URI[md5sum] = "8d82866416d050751c158a50e9f75c8c"
-SRC_URI[sha256sum] = "877885ea224eb07e1c26ba9e82a96e5d9990b4443a81be9f35d129ca105685d6"
+SRC_URI[md5sum] = "598ecc5475adc4607298ab84d001a945"
+SRC_URI[sha256sum] = "510ae2ef6f6bab68fa8a236062534d61dbf1e92f23c17b71b3ee026d136c0342"
 
 USE_HFP = "${@base_contains("TUNE_FEATURES", "callconvention-hard", "yes", "no", d)}"
 
 do_configure () {
 
-	if [ "${USE_HFP}" = "no" ]; then
-		bberror "${PN}-${PV} uses Hard Floating Point binaries, which are incompatible with your machine tuning"
+	if [ "${USE_HFP}" = "yes" ]; then
+		bberror "${PN}-${PV} uses Soft Floating Point binaries, which are incompatible with your machine tuning"
 		exit 1
 	fi
 }
