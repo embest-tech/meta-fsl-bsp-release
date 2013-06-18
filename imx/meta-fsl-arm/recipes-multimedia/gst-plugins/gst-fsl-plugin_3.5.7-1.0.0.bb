@@ -13,7 +13,7 @@ PE = "2"
 
 PACKAGE_NAME = "gst-fsl-plugins"
 
-SRC_URI[md5sum] = "4f35f3c97d97b110ae95c676b32cf4ef"
-SRC_URI[sha256sum] = "4dc6256810c0c3028cdf9a62b4f9d01ff86c204ba1af80c5e9fc28ca3ac4031d"
+SRC_URI[md5sum] = "ffe1ff58161d541685ecf6eeb1960826"
+SRC_URI[sha256sum] = "67461598cc2843670d1b1cb96178d918c65cbd1ccbf5d5fb9731292319d644a8"
 
 COMPATIBLE_MACHINE = "(mx6)"
