@@ -6,13 +6,13 @@ LICENSE = "GPLv2"
 SECTION = "multimedia"
 LIC_FILES_CHKSUM = "file://EULA.txt;md5=ea4d5c069d7aef0838a110409ea78a01"
 
-PE = "2"
+PR = "r1.0.37"
 
 inherit autotools pkgconfig
 
 SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.tar.gz"
-SRC_URI[md5sum] = "9fd7718914b0339218c4939da7483d93"
-SRC_URI[sha256sum] = "91bcf78611c5fad15a05752c5f5c9873c2bf67fb2bb5839b173ad7bec522ca3b"
+SRC_URI[md5sum] = "0568d29a7be1868d6782e7608fedb662"
+SRC_URI[sha256sum] = "e810453af66f840bb34b49e3ebd63c595d0e0d6692e0abc7b0889ae86bec3a38"
 
 do_install_append() {
 	# FIXME: Drop examples
