@@ -5,7 +5,6 @@ DESCRIPTION = "This package provides AC3 decoder library and uses"
 # FIXME: fix the license
 LICENSE = "FSL-mm-excluded-codec"
 LICENSE_FLAGS = "license_${PN}-${PV}"
-#LICENSE = "Proprietary"
 DEPENDS = "libfslcodec"
 
 SECTION = "multimedia"
@@ -27,8 +26,10 @@ do_install_append() {
     mv $p ${D}${libdir}/imx-mm/audio-codec/*.so* ${D}${libdir}
 
     # FIXME: Drop examples
-    rm -r ${D}${datadir}/imx-mm
+#    rm -r ${D}${datadir}/imx-mm
 }
+
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
 # FIXME: All binaries lack GNU_HASH in elf binary but as we don't have
 # the source we cannot fix it. Disable the insane check for now.

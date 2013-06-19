@@ -5,7 +5,6 @@ DESCRIPTION = "Microsoft component library, including WMA and WMV789 decoder lib
 # FIXME: fix the license
 LICENSE = "FSL-mm-special-codec"
 LICENSE_FLAGS = "license_${PN}-${PV}"
-#LICENSE = "Proprietary"
 DEPENDS = "libfslcodec"
 
 SECTION = "multimedia"
@@ -26,17 +25,24 @@ do_install_append() {
     # LTIB move the files around or gst-fsl-plugin won't find them
     mv $p ${D}${libdir}/imx-mm/audio-codec/*.so* ${D}${libdir}
     mv $p ${D}${libdir}/imx-mm/video-codec/*.so* ${D}${libdir}
+	rmdir ${D}${libdir}/imx-mm/video-codec
 
     # FIXME: Drop examples
-    rm -r ${D}${datadir}/imx-mm
+#    rm -r ${D}${datadir}/imx-mm/video-codec/
 }
 
-# FIXME: All binaries lack GNU_HASH in elf binary but as we don't have
-# the source we cannot fix it. Disable the insane check for now.
-INSANE_SKIP_${PN} = "ldflags textrel"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
-FILES_${PN} += "${libdir}/imx-mm/audio-codec/wrap/*${SOLIBS}"
-FILES_${PN}-dev += "${libdir}/imx-mm/audio-codec/wrap/*${SOLIBSDEV}"
+python populate_packages_prepend() {
+    # FIXME: All binaries lack GNU_HASH in elf binary but as we don't have
+    # the source we cannot fix it. Disable the insane check for now.
+    for p in d.getVar('PACKAGES', True).split():
+        d.setVar("INSANE_SKIP_%s" % p, "ldflags textrel dev-so")
+}
+
+
+FILES_${PN} += "${libdir}/*${SOLIBSDEV} ${libdir}/imx-mm/audio-codec/wrap/*${SOLIBS} ${libdir}/imx-mm/audio-codec/wrap/*${SOLIBSDEV}"
+FILES_${PN}-dev = "${libdir}/pkgconfig/*.pc ${includedir}/imx-mm/* ${datadir}/imx-mm/*"
 FILES_${PN}-dbg += "${libdir}/imx-mm/video-codec/.debug \
                     ${libdir}/imx-mm/audio-codec/.debug \
                     ${libdir}/imx-mm/audio-codec/wrap/.debug"
