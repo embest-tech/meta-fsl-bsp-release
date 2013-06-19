@@ -13,9 +13,8 @@ LIC_FILES_CHKSUM = "file://src/vivante_fbdev/vivante.h;endline=19;md5=641ac6e6d0
 
 SRC_URI = "${FSL_MIRROR}/xserver-xorg-video-imx-viv-${PV}.tar.gz \
            file://Makefile.am-remove-prefixed-include-path.patch"
-
-SRC_URI[md5sum] = "9962e051675e778c5d921b51c2c6ce6b"
-SRC_URI[sha256sum] = "42db61df128980fa408ade8fc89bc4922d534ec76f4c162227cd7c950a9e3e04"
+SRC_URI[md5sum] = "72ef5f4176660a9150e969dfea6aeac9"
+SRC_URI[sha256sum] = "e9d25319dcc8b8960ddb116581d7c79b45e471ce79915e7518a30121175b4c98"
 
 EXTRA_OECONF_armv7a = " --enable-neon --disable-static"
 CFLAGS += " -I${STAGING_INCDIR}/xorg -I${STAGING_INCDIR}/drm"
