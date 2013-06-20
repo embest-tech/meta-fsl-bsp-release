@@ -6,7 +6,7 @@ require libfslparser.inc
 PR = "${INC_PR}.0"
 PE = "2"
 
-SRC_URI[md5sum] = "8829467d9511cc99c79ecd79ce43f34d"
-SRC_URI[sha256sum] = "845fd1567fc241caaaed041c6254cc66329fe8742312c021505d95af81bb4f2a"
+SRC_URI[md5sum] = "81c9dff97716e1363772ff70c214321f"
+SRC_URI[sha256sum] = "686f3886e663d383d1723b1e7f33d65a0a32a439334f4b89d02d28caeb496fe9"
 
 COMPATIBLE_MACHINE = "(mx6)"

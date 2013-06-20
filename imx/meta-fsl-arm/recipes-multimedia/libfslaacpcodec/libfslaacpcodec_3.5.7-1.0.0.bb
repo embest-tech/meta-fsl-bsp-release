@@ -16,8 +16,8 @@ inherit fsl-eula-unpack autotools pkgconfig
 
 SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
 
-SRC_URI[md5sum] = "bd69dba6fe2fe566fdb54f8c676ba9b8"
-SRC_URI[sha256sum] = "dc8075b830e8605f783c231f8738080fdaf3baf565adab016bd116ee23aa1f09"
+SRC_URI[md5sum] = "4d050eb6e1a1472c3e8bbafd7c39d894"
+SRC_URI[sha256sum] = "9ef38d86526481ead4df165438e983b057754f5d91982799fb9422399ea0f63c"
 
 FLOATING_POINT_SEL ?= ""
 FLOATING_POINT_SEL = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '--enable-fhw', '', d)}"

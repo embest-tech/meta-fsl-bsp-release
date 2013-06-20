@@ -14,8 +14,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=ea4d5c069d7aef0838a110409ea78a01"
 inherit fsl-eula-unpack autotools pkgconfig
 
 SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
-SRC_URI[md5sum] = "3bea37fedb5ddd76245ba8838afb6850"
-SRC_URI[sha256sum] = "d0fb155ac261d72d45ba6065717347cee346710cff209d1c587b3180d5942f21"
+SRC_URI[md5sum] = "9d27d2979c79c460b19bdcb10ddc5dbd"
+SRC_URI[sha256sum] = "9c686925d2d00c33e380e12df2578fc56640d6a06db2451421b16d65437c690c"
 
 FLOATING_POINT_SEL ?= ""
 FLOATING_POINT_SEL = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '--enable-fhw', '', d)}"

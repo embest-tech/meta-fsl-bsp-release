@@ -15,8 +15,8 @@ inherit fsl-eula-unpack autotools pkgconfig
 PLATFORM_mx6 = "MX6"
 
 SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
-SRC_URI[md5sum] = "d940ed056233a64d2d747fad4adb28ed"
-SRC_URI[sha256sum] = "cab7e3fa5f96be2c6404a50178a4767fad40a8f3d7ff9fd0f4b54ccb0b06265c"
+RC_URI[md5sum] = "609a0e12269636531ace0a454aef62d2"
+SRC_URI[sha256sum] = "67ebf1c41c5fc0e03f861e77771066077d0ccd5d4ee64fa7b9273b4074695bf0"
 
 INCLUDE_DIR = "-I${STAGING_KERNEL_DIR}/include"
 EXTRA_OECONF = "CFLAGS="${INCLUDE_DIR}""
