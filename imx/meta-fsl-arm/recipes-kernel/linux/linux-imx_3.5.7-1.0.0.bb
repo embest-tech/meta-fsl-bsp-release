@@ -8,9 +8,12 @@ PR = "${INC_PR}.1"
 
 COMPATIBLE_MACHINE = "(mx6)"
 
-SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git"
+SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git \
+           file://perfutils-yocto-build-break-fix.patch \
+           file://0001-ENGR00210559-1-Integrate-gpu-openGL2.1-and-DRM.patch \
+           file://defconfig-add-drm.patch"
+
 SRCREV = "52777f18d572b9f6600e82a89d1e936607eb6c5f"
-SRC_URI += "file://perfutils-yocto-build-break-fix.patch"
 
 LOCALVERSION = "-1.0.0"
 
@@ -23,6 +26,4 @@ do_configure_prepend() {
          cp ${S}/arch/arm/configs/imx_v6_v7_defconfig ${S}/.config
          cp ${S}/arch/arm/configs/imx_v6_v7_defconfig ${S}/../defconfig
 }
-
-
 
