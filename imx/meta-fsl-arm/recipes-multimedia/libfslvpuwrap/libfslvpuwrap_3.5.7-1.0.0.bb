@@ -2,17 +2,17 @@
 # Released under the MIT license (see COPYING.MIT for the terms)
 DESCRIPTION = "Freescale Multimedia VPU wrapper"
 DEPENDS = "imx-lib"
-LICENSE = "GPLv2"
+LICENSE = "Proprietary"
 SECTION = "multimedia"
 LIC_FILES_CHKSUM = "file://EULA.txt;md5=ea4d5c069d7aef0838a110409ea78a01"
 
-PR = "r1.0.37"
+PR = "r1.0.38"
 
-inherit autotools pkgconfig
+inherit fsl-eula-unpack autotools pkgconfig
 
-SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.tar.gz"
-SRC_URI[md5sum] = "0568d29a7be1868d6782e7608fedb662"
-SRC_URI[sha256sum] = "e810453af66f840bb34b49e3ebd63c595d0e0d6692e0abc7b0889ae86bec3a38"
+SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
+SRC_URI[md5sum] = "bb7d7500705f9cc433ba04a21995c608"
+SRC_URI[sha256sum] = "57004df11e5e2f5e96033d87e85ef8c7791d57cf747db9fb41d49c4d1f38ec15"
 
 do_install_append() {
 	# FIXME: Drop examples
