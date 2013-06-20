@@ -8,11 +8,9 @@ PR = "${INC_PR}.1"
 
 COMPATIBLE_MACHINE = "(mx6)"
 
-# Can build from tag or branch based on the variables set in local.conf which are set by setup script
-SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git;${FSL_ARM_BRANCH_TAG}=${FSL_ARM_GIT_TAGBRANCH}\
-           file://perfutils-yocto-build-break-fix.patch"
-
-SRCREV = "${FSL_ARM_RELEASE_TAG}"
+SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git"
+SRCREV = "52777f18d572b9f6600e82a89d1e936607eb6c5f"
+SRC_URI += "file://perfutils-yocto-build-break-fix.patch"
 
 LOCALVERSION = "-1.0.0"
 
@@ -27,5 +25,4 @@ do_configure_prepend() {
 }
 
 
-## add the Device tree for DL
-KERNEL_DEVICETREE_mx6dl = "${S}/arch/arm/boot/dts/imx6dl-sabresd.dts"
+
