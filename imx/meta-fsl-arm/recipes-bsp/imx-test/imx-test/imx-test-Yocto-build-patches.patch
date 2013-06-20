@@ -322,7 +322,7 @@ index a3a38c9..385e643 100644
  
  $(TARGET): $(OBJ)
 +ifeq ($(YOCTO_BUILD),1)
-+      $(VERBOSE) $(CC) -lpthread -o $(TARGET) $(OBJ) ${LIBS} -lvpu -lipu -lrt
++	$(VERBOSE) $(CC) -lpthread -o $(TARGET) $(OBJ) ${LIBS} -lvpu -lipu -lrt
 +else
  	$(LINK) -lpthread -o $(TARGET) $(OBJ) ${LIBS} -lvpu -lipu -lrt
 +endif
