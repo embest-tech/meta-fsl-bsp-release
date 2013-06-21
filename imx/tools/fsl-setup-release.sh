@@ -23,7 +23,7 @@ CWD=`pwd`
 exit_message ()
 {
    echo "To return to this build environment later please run:"
-   echo "    source setup-environment build"
+   echo "    source setup-environment <build-dir>"
 }
 
 usage()
@@ -113,6 +113,5 @@ if [ ! -e $BUILD_DIR/conf/local.conf.org ]; then
 fi
 
 
-exit_message
 cd  $BUILD_DIR
 clean_up
