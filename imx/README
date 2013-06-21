@@ -1,0 +1,90 @@
+Freescale's 3.5.7-1.0.0 Yocto BSP
+==================================
+
+This BSP is a Freescale release providing support for the following processors
+
+ * i.MX6 - Community established
+   * Freescale i.MX6Q SABRE Smart Device (imx6qsabresd)
+   * Freescale i.MX6Q SABRE Auto (imx6qsabreauto)
+
+ * i.MX6 - Updated for 3.5.7-1.0.0 release
+   * Freescale i.MX6DL SABRE Smart Device (imx6dlsabresd)
+
+ * i.MX6 - New as of 3.5.7-1.0.0 release
+   * Freescale i.MX6SOLO SABRE Smart Device(imx6solosabresd )
+   * Freescale i.MX6SOLO SABRE Auto (imx6solosabreauto )
+   * Freescale i.MX6DL SABRE Auto (imx6dlsabreauto)
+
+ * i.MX6 New Automotive U-boot options
+   * Freescale i.MX6SOLO SABRE Auto SPI-NOR (imx6solosabreauto-spi-nor )
+   * Freescale i.MX6SOLO SABRE Auto NAND (imx6solosabreauto-nand )
+   * Freescale i.MX6SOLO SABRE Auto EIM-NOR (imx6solosabreauto-eim-nor )
+   * Freescale i.MX6DL SABRE Auto SPI-NOR (imx6dlsabreauto-spi-nor)
+   * Freescale i.MX6DL SABRE Auto NAND (imx6dlsabreauto-nand)
+   * Freescale i.MX6DL SABRE Auto EIM-NOR (imx6dlsabreauto-eim-nor)
+   * Freescale i.MX6Q SABRE Auto SPI-NOR (imx6qsabreauto-spi-nor)
+   * Freescale i.MX6Q SABRE Auto NAND (imx6qsabreauto-nand-nor)
+   * Freescale i.MX6Q SABRE Auto EIM-NOR (imx6qsabreauto-eim-nor)
+
+
+Quick Start Guide
+-----------------
+
+Once you have downloaded the source of all projects, you will have to
+call:
+
+Please note that new machines in the meta-fsl-bsp-release layer will not be found in community setup unless they 
+are copied into the meta-fsl-arm/conf/machine directory. 
+
+$: MACHINE=<machine name>. ./setup-environment <build directory>
+cd ..
+
+To integrate the new meta-fsl-bsp-release-layer
+$: cp fsl-release-manifest.xml .repo
+$: cd .repo
+$: cp manifest.xml manifest-community.xml
+$: ln -s fsl-release-manifest.xml manifest.xml
+$: cd ..
+$: repo sync
+$: MACHINE=<machine name>. ./fsl-setup-release.sh -b <build directory> 
+
+This will sync in the layer and update buidl for local.conf
+
+
+After this step, you will have everything to build an image.
+
+
+Build Configurations
+---------------------
+Freescale has created new images to support multiple graphics back ends.  
+This is an alpha release so new back ends such as directfb and fb has not been fully tested and probably need
+additional community support for package groups.  Below is the setup for all the backends with the new image recipes
+
+Building X11
+------------
+X11 is default so existing community will work using existing images.    
+This is almost the same as fsl-image-gui and fsl-image-gui-sdk
+$: bitbake fsl-image-x11
+$: bitbake fsl-image-x11-sdk
+
+Building Frame Buffer (FB)
+---------------------------
+Frame buffer requires a DISTRO_FEATURES change which our setup script will provide in local.conf
+fsl-image-fb and fsl-image-fb-sdk provide the frame buffer images.  Note that since gpu-viv-bin-mx6q provides 
+different binaries for each backend, it is recommended to build a clean system to pick up the right gpu frame buffer libraries.
+
+$: MACHINE=<machine name>. ./fsl-setup-release.sh -b <build directory> -e fb
+$: bitbake fsl-image-fb
+
+
+Building Direct FB (DFB)
+---------------------------
+Direct FBr requires a DISTRO_FEATURES change which our setup script will provide in local.conf
+fsl-image-dfb and fsl-image-dfb-sdk provide the direct frame buffer images 
+Note that since gpu-viv-bin-mx6q provides 
+different binaries for each backend, it is recommended to build a clean system to pick up the right gpu directfb libraries.
+
+$: MACHINE=<machine name>. ./fsl-setup-release.sh -b <build directory> -e dfb
+$: bitbake fsl-image-dfb
+
+
