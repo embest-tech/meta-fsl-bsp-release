@@ -26,7 +26,7 @@ PLATFORM_mx28 = "MX28"
 # Todo add a mechanism to map posible build targets
 INCLUDE_DIR = "-I${STAGING_KERNEL_DIR}/include"
 EXTRA_OEMAKE = "INCLUDES=${INCLUDE_DIR}"
-EXTRA_OECONF = "PLATFORM=${PLATFORM} --disable-valgrind --disable-examples --disable-debug"
+EXTRA_OECONF = "PLATFORM=${PLATFORM} CROSS_ROOT=${PKG_CONFIG_SYSROOT_DIR} --disable-valgrind --disable-examples --disable-debug"
 
 PACKAGES += "${PN}-libmfwsconf ${PN}-libgplaycore ${PN}-libgstfsl \
              ${PN}-libme ${PN}-libgstbufmeta ${PN}-libmfwba \
