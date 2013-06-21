@@ -9,11 +9,10 @@ PR = "${INC_PR}.1"
 COMPATIBLE_MACHINE = "(mx6)"
 
 SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git \
-           file://perfutils-yocto-build-break-fix.patch \
            file://0001-ENGR00210559-1-Integrate-gpu-openGL2.1-and-DRM.patch \
            file://defconfig-add-drm.patch"
 
-SRCREV = "52777f18d572b9f6600e82a89d1e936607eb6c5f"
+SRCREV = "461120b09550c6c1ce03ac29c70f52eccf21411c"
 
 LOCALVERSION = "-1.0.0"
 
