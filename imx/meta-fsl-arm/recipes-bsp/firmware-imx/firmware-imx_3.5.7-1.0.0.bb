@@ -1,9 +1,9 @@
-require firmware-imx.inc
+require recipes-bsp/firmware-imx/firmware-imx.inc
 
 PR = "${INC_PR}.0"
 PE="1"
 
-SRC_URI[md5sum] = "70fa70daeea00f26bcb4f327d5bfe682"
-SRC_URI[sha256sum] = "fbf82e302c04d26f38e284cc43dfcb08fd43e7497b0b07f34ebcb417c92c006b"
+SRC_URI[md5sum] = "c816d6757d62a046a520d47c07cee65f"
+SRC_URI[sha256sum] = "9cca0a3f42159c6554d6732bb2550e3aa82cac5ac4fdd26729664d4fa826595a"
 
 COMPATIBLE_MACHINE = "(mx6)"
