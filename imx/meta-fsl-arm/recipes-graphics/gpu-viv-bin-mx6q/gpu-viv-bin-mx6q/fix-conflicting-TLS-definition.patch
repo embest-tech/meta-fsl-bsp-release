@@ -3,10 +3,10 @@ Avoid conflicting types with Xorg newer code
 Upstream-Status: Pending
 Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
 
-Index: gpu-viv-bin-mx6-1.1.0/usr/include/HAL/gc_hal_base.h
+Index: gpu-viv-bin-mx6q-1.0.0/usr/include/HAL/gc_hal_base.h
 ===================================================================
---- gpu-viv-bin-mx6-1.1.0.orig/usr/include/HAL/gc_hal_base.h
-+++ gpu-viv-bin-mx6-1.1.0/usr/include/HAL/gc_hal_base.h
+--- gpu-viv-bin-mx6q-1.0.0.orig/usr/include/HAL/gc_hal_base.h
++++ gpu-viv-bin-mx6q-1.0.0/usr/include/HAL/gc_hal_base.h
 @@ -101,7 +101,7 @@ extern gcsPLS gcPLS;
  typedef struct _gcsTLS * gcsTLS_PTR;
  

@@ -8,8 +8,10 @@ require recipes-graphics/gpu-viv-bin-mx6q/gpu-viv-bin-mx6q.inc
 
 LIC_FILES_CHKSUM = "file://usr/include/gc_vdk.h;endline=11;md5=19f5925343fa3da65596eeaa4ddb5fd3"
 
-SRC_URI[md5sum] = "3f74cc62047a258a7845084d4c720b74"
-SRC_URI[sha256sum] = "05012f6aed4cf08c8ae3358bc02c06bec4fbd439a4b1a982b1365d98db894a70"
+SRC_URI[md5sum] = "28aade85e2188c5a50c860aa1729d8fa"
+SRC_URI[sha256sum] = "531eda3105c4c50eee7c4c9debfb82d0edfe7a804c52d1fa5b9867adf2638ac6"
+
+PACKAGES =+ "libvivante-dfb-mx6"
 
 USE_HFP = "${@base_contains("TUNE_FEATURES", "callconvention-hard", "yes", "no", d)}"
 
@@ -26,11 +28,8 @@ do_install () {
     install -d ${D}${includedir}
 
     cp ${S}/usr/lib/*.so ${D}${libdir}
+    cp -r ${S}/usr/lib/directfb-1.6-0 ${D}${libdir}
     cp -axr ${S}/usr/include/* ${D}${includedir}
-
-#   No longer provided
-#   rm -r ${D}${includedir}/GL
-
     cp -axr ${S}/opt ${D}
 
     if [ "${USE_X11}" = "yes" ]; then
@@ -69,3 +68,5 @@ do_install () {
     find ${D}${libdir} -type f -exec chmod 644 {} \;
     find ${D}${includedir} -type f -exec chmod 644 {} \;
 }
+
+FILES_libvivante-dfb-mx6 = "${libdir}/directfb-1.6-0/gfxdrivers/libdirectfb_gal.so"

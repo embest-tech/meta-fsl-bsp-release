@@ -15,10 +15,10 @@ Signed-off-by: Jeremy Stashluk <jstashluk@dekaresearch.com>
  usr/include/gc_vdk_types.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: gpu-viv-bin-mx6-1.1.0/usr/include/gc_vdk_types.h
+Index: gpu-viv-bin-mx6q-1.0.0-hfp/usr/include/gc_vdk_types.h
 ===================================================================
---- gpu-viv-bin-mx6-1.1.0.orig/usr/include/gc_vdk_types.h
-+++ gpu-viv-bin-mx6-1.1.0/usr/include/gc_vdk_types.h
+--- gpu-viv-bin-mx6q-1.0.0-hfp.orig/usr/include/gc_vdk_types.h
++++ gpu-viv-bin-mx6q-1.0.0-hfp/usr/include/gc_vdk_types.h
 @@ -39,7 +39,7 @@ extern "C" {
  #endif
  
