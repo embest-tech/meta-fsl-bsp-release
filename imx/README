@@ -29,12 +29,10 @@ This BSP is a Freescale release providing support for the following processors
 
 Quick Start Guide
 -----------------
-
-Once you have downloaded the source of all projects, you will have to
-call:
-
-Please note that new machines in the meta-fsl-bsp-release layer will not be found in community setup unless they 
+New machines in the meta-fsl-bsp-release layer will not be found in community setup unless they 
 are copied into the meta-fsl-arm/conf/machine directory. 
+
+Once you have downloaded the source of all projects, you must run the following commands:
 
 $: MACHINE=<machine name>. ./setup-environment <build directory>
 cd ..

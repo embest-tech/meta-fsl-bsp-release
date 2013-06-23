@@ -101,12 +101,7 @@ if [ ! -e $BUILD_DIR/conf/local.conf.org ]; then
 
     echo >> $BUILD_DIR/conf/local.conf
 
-    # setup external build servers used in uboot and kernel recipes
-    echo "# Freescale Build servers" >> $BUILD_DIR/conf/local.conf
-    echo "FSL_ARM_GIT_SERVER = \"git.freescale.com/imx\"" >> $BUILD_DIR/conf/local.conf
-    echo >> $BUILD_DIR/conf/local.conf
-
-    if [ -e "$BACKEND" ]; then
+    if [ ! -z "$BACKEND" ]; then
         echo "DISTRO_FEATURES = \"$DIST_FEATURES\"" >> $BUILD_DIR/conf/local.conf
         echo >> $BUILD_DIR/conf/local.conf
     fi
