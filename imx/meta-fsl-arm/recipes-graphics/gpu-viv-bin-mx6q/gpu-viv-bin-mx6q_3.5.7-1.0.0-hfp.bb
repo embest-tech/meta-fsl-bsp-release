@@ -8,8 +8,13 @@ require recipes-graphics/gpu-viv-bin-mx6q/gpu-viv-bin-mx6q.inc
 
 LIC_FILES_CHKSUM = "file://usr/include/gc_vdk.h;endline=11;md5=19f5925343fa3da65596eeaa4ddb5fd3"
 
-SRC_URI[md5sum] = "28aade85e2188c5a50c860aa1729d8fa"
-SRC_URI[sha256sum] = "531eda3105c4c50eee7c4c9debfb82d0edfe7a804c52d1fa5b9867adf2638ac6"
+SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true \
+           file://0001-change-header-path-to-HAL.patch \
+           file://gc_hal_eglplatform-remove-xlib-undefs.patch \
+"
+
+SRC_URI[md5sum] = "a57f649d86ecbcf69fd1d089fa7087ef"
+SRC_URI[sha256sum] = "1cc015ae2ac2beeb79ec4130f7c5de4777c3b069b731363966dedd45efb1b5d3"
 
 PACKAGES =+ "libvivante-dfb-mx6"
 

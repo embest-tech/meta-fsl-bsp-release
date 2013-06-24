@@ -4,15 +4,14 @@
 require recipes-kernel/linux/linux-imx.inc
 include linux-fsl-dtb.inc
 
-PR = "${INC_PR}.2"
+PR = "${INC_PR}.3"
 
 COMPATIBLE_MACHINE = "(mx6)"
 
 SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git \
-           file://0001-ENGR00210559-1-Integrate-gpu-openGL2.1-and-DRM.patch \
-           file://defconfig-add-drm.patch"
+"
 
-SRCREV = "98b34d2849b9cc0a9e6b50f9946806873da422bf"
+SRCREV = "f966c6799855b0ae3d366837a4b62fa594970615"
 
 LOCALVERSION = "-1.0.0"
 
