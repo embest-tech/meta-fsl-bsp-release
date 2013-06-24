@@ -5,6 +5,7 @@ DEPENDS = "imx-lib"
 LICENSE = "Proprietary"
 SECTION = "multimedia"
 LIC_FILES_CHKSUM = "file://EULA.txt;md5=ea4d5c069d7aef0838a110409ea78a01"
+DEPENDS = "imx-lib"
 
 PR = "r1.0.38"
 
