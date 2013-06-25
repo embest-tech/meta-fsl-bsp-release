@@ -12,7 +12,7 @@ PR = "4"
 
 # branch=imx_v2013.04_3.5.7_1.0.0_alpha
 SRC_URI = "git://${FSL_ARM_GIT_SERVER}/uboot-imx.git;protocol=git"
-SRCREV = "6bd1ddd270527121e87ada0e1fb40636c8f06144"
+SRCREV = "8bb54e945754e003a4ffe9092e79d3e0e203fb49"
 
 S = "${WORKDIR}/git"
 
