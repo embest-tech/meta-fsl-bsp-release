@@ -3,13 +3,19 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 PRINC := "${@int(PRINC) + 1}"
 
-SRC_URI_append_mx6 = " file://9-blacklist.rules"
+SRC_URI_append_mx6 = " file://local.rules file://blacklist.conf"
 
 do_install_prepend () {
-	if [ -e "${WORKDIR}/9-blacklist.rules" ]; then
+	if [ -e "${WORKDIR}/local.rules" ]; then
 		install -d ${D}${sysconfdir}/udev/rules.d
-		install -m 0644 ${WORKDIR}/9-blacklist.rules ${D}${sysconfdir}/udev/rules.d
+		install -m 0644 ${WORKDIR}/local.rules ${D}${sysconfdir}/udev/rules.d
+	fi
+	if [ -e "${WORKDIR}/blacklist.conf" ]; then
+		install -d ${D}${sysconfdir}/modprobe.d
+		install -m 0644 ${WORKDIR}/blacklist.conf ${D}${sysconfdir}/modprobe.d
 	fi
 }
+
+FILES_${PN}_append = " ${sysconfdir}/modprobe.d"
 
 PACKAGE_ARCH_mx6 = "${MACHINE_ARCH}"
