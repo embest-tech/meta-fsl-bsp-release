@@ -8,6 +8,7 @@ SOC_TOOLS_TESTAPPS_mx6 += " \
 RDEPENDS_${PN}-tools-testapps += "\
     mtd-utils \
     mtd-utils-ubifs \
+    imx-kobs \
     canutils \
 "
 
