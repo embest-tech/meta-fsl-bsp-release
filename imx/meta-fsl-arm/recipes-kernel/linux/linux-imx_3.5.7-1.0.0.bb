@@ -25,3 +25,12 @@ do_configure_prepend() {
          cp ${S}/arch/arm/configs/imx_v6_v7_defconfig ${S}/../defconfig
 }
 
+do_configure_append() {
+	kernel_conf_variable LOCALVERSION "\"${LOCALVERSION}\""
+	kernel_conf_variable LOCALVERSION_AUTO y
+
+	# Add GIT revision to the local version
+	head=`git rev-parse --verify --short HEAD 2> /dev/null`
+	printf "+%s%s"  $head > ${S}/.scmversion
+}
+
