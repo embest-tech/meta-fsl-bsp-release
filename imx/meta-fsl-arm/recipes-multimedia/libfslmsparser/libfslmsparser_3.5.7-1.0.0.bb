@@ -15,8 +15,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=ea4d5c069d7aef0838a110409ea78a01"
 inherit fsl-eula-unpack autotools pkgconfig
 
 SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
-SRC_URI[md5sum] = "b0f86fbc63e7431df72d41e6f5466127"
-SRC_URI[sha256sum] = "3afa4251b98a76bf1d4810a582910d00ddbdb4863bb26900ba1e948b93be9004"
+SRC_URI[md5sum] = "f2815f58e350f28c8df5b30011099d60"
+SRC_URI[sha256sum] = "22d2d04de9f885d418a844bf9937af6ef08d777e43b16b5cae4f219ede03b501"
 
 # FIXME: All binaries lack GNU_HASH in elf binary but as we don't have
 # the source we cannot fix it. Disable the insane check for now.
