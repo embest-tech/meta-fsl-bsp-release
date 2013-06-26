@@ -15,7 +15,7 @@ This BSP is a Freescale release providing support for the following processors
    * Freescale i.MX6SOLO SABRE Auto (imx6solosabreauto )
    * Freescale i.MX6DL SABRE Auto (imx6dlsabreauto)
 
- * i.MX6 New Automotive U-boot options
+ * i.MX6 New U-boot options
    * Freescale i.MX6SOLO SABRE Auto SPI-NOR (imx6solosabreauto-spi-nor )
    * Freescale i.MX6SOLO SABRE Auto NAND (imx6solosabreauto-nand )
    * Freescale i.MX6SOLO SABRE Auto EIM-NOR (imx6solosabreauto-eim-nor )
@@ -25,6 +25,7 @@ This BSP is a Freescale release providing support for the following processors
    * Freescale i.MX6Q SABRE Auto SPI-NOR (imx6qsabreauto-spi-nor)
    * Freescale i.MX6Q SABRE Auto NAND (imx6qsabreauto-nand-nor)
    * Freescale i.MX6Q SABRE Auto EIM-NOR (imx6qsabreauto-eim-nor)
+   * Freescale i.MX6Q SABRE SD SATA (imx6qsabresd-sata)
 
 
 Quick Start Guide
@@ -37,7 +38,7 @@ Once you have downloaded the source of all projects, you must run the following 
 $: MACHINE=<machine name>. ./setup-environment <build directory>
 cd ..
 
-To integrate the new meta-fsl-bsp-release-layer
+The following commands will integrate the new meta-fsl-bsp-release-layer
 $: cp fsl-release-manifest.xml .repo
 $: cd .repo
 $: cp manifest.xml manifest-community.xml
@@ -46,8 +47,7 @@ $: cd ..
 $: repo sync
 $: MACHINE=<machine name>. ./fsl-setup-release.sh -b <build directory> 
 
-This will sync in the layer and update buidl for local.conf
-
+This will sync in the layer and update local.conf and bblayer.conf in build directory.
 
 After this step, you will have everything to build an image.
 
@@ -55,7 +55,7 @@ After this step, you will have everything to build an image.
 Build Configurations
 ---------------------
 Freescale has created new images to support multiple graphics back ends.  
-This is an alpha release so new back ends such as directfb and fb has not been fully tested and probably need
+This is an alpha release so new back ends such as directfb and fb have not been fully tested and probably need
 additional community support for package groups.  Below is the setup for all the backends with the new image recipes
 
 Building X11
@@ -77,7 +77,7 @@ $: bitbake fsl-image-fb
 
 Building Direct FB (DFB)
 ---------------------------
-Direct FBr requires a DISTRO_FEATURES change which our setup script will provide in local.conf
+Direct FB requires a DISTRO_FEATURES change which our setup script will provide in local.conf
 fsl-image-dfb and fsl-image-dfb-sdk provide the direct frame buffer images 
 Note that since gpu-viv-bin-mx6q provides 
 different binaries for each backend, it is recommended to build a clean system to pick up the right gpu directfb libraries.
