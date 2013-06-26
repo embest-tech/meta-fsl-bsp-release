@@ -38,6 +38,9 @@ do_install () {
 
 RDEPENDS_${PN} += "libvivante-dri-mx6 \
                    xserver-xorg-module-exa \
+                   xserver-xorg-extension-glx \
+                   xserver-xorg-extension-dri \
+                   xserver-xorg-extension-dri2 \
                    mesa-driver-swrast "
 
 
