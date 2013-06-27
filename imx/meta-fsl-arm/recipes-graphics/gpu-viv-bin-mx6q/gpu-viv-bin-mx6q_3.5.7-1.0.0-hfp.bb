@@ -13,8 +13,8 @@ SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true \
            file://gc_hal_eglplatform-remove-xlib-undefs.patch \
 "
 
-SRC_URI[md5sum] = "a57f649d86ecbcf69fd1d089fa7087ef"
-SRC_URI[sha256sum] = "1cc015ae2ac2beeb79ec4130f7c5de4777c3b069b731363966dedd45efb1b5d3"
+SRC_URI[md5sum] = "42989b28716f7b5bc3b8dce44941f881"
+SRC_URI[sha256sum] = "90a547f0c5bfe52ac2e0f606ee0bd58d930fc3035c7d4b9ebac2652e87b367b7"
 
 PACKAGES =+ "libvivante-dfb-mx6"
 
@@ -33,7 +33,7 @@ do_install () {
     install -d ${D}${includedir}
 
     cp ${S}/usr/lib/*.so ${D}${libdir}
-    cp -r ${S}/usr/lib/directfb-1.6-0 ${D}${libdir}
+    rm ${D}${libdir}/libGL.so
     cp -axr ${S}/usr/include/* ${D}${includedir}
     cp -axr ${S}/opt ${D}
 
@@ -43,6 +43,7 @@ do_install () {
         find ${D}${libdir} -name '*-fb.so' -exec rm '{}' ';'
     else
         if [ "${USE_DFB}" = "yes" ]; then
+            cp -r ${S}/usr/lib/directfb-1.6-0 ${D}${libdir}
             find ${D}${libdir} -name '*-x11.so' -exec rm '{}' ';'
             find ${D}${libdir} -name '*-fb.so' -exec rm '{}' ';'
         else
