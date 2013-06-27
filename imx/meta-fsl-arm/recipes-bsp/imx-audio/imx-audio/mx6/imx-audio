@@ -20,8 +20,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 [ -x "$AMIXER" ] || exit 0
 
 do_start() {
-	# Enable the Headset (Audio Out)
-	#   Use the default setting in the audio driver
+	echo "Use the default setting in the audio driver"
 }
 
 case "$1" in
