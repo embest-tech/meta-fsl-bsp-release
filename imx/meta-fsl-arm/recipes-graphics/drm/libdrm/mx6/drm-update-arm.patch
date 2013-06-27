@@ -1,3 +1,8 @@
+Add ARM support into xf86arm.h.  This provides support for Xorg interface.
+Without this the vivante samples will hang during close requiring a reboot
+
+Signed-off-by: Lauren Post <lauren.post@freescale.com>
+
 diff --git a/xf86drm.h b/xf86drm.h
 --- a/xf86drm.h
 +++ b/xf86drm.h
