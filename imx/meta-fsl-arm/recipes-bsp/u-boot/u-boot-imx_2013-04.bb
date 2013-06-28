@@ -8,11 +8,11 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
 DEPENDS_mxs += "elftosb-native"
 
-PR = "4"
+PR = "5"
 
 # branch=imx_v2013.04_3.5.7_1.0.0_alpha
 SRC_URI = "git://${FSL_ARM_GIT_SERVER}/uboot-imx.git;protocol=git"
-SRCREV = "8bb54e945754e003a4ffe9092e79d3e0e203fb49"
+SRCREV = "a5a24c34364d59175d7d3130d02e8472572b9f4e"
 
 S = "${WORKDIR}/git"
 
