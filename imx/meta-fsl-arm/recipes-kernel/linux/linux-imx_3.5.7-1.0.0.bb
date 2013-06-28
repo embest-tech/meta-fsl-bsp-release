@@ -4,14 +4,14 @@
 require recipes-kernel/linux/linux-imx.inc
 include linux-fsl-dtb.inc
 
-PR = "${INC_PR}.4"
+PR = "${INC_PR}.5"
 
 COMPATIBLE_MACHINE = "(mx6)"
 
 SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git \
 "
 
-SRCREV = "5f9fee37ad99ec244f8175d7672ccbb904ef2b8a"
+SRCREV = "328597018dc58c4ffa38461db09e45bef62af227"
 
 LOCALVERSION = "-1.0.0"
 
