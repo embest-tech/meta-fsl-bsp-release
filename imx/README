@@ -85,4 +85,24 @@ different binaries for each backend, it is recommended to build a clean system t
 $: MACHINE=<machine name>. ./fsl-setup-release.sh -b <build directory> -e dfb
 $: bitbake fsl-image-dfb
 
+Hardware Floating Point
+-----------------------
+3.5.7-1.0.0 is our first release that enables hardware floating point.  This feature is enabled in both the machine 
+configurations and in the layer.conf (because some machine files exist in community meta-fsl-arm.
+DEFAULTTUNE_mx6 = "cortexa9hf-neon
+
+Note we also provide some binaries with a software floating point version which we switch basis on FP_TAG in layer.conf.
+
+Restricted Codecs
+-----------------
+Some codecs have recipes in the layer but binaries are not provided in the Yocto fetch system (microsoft, ac3 and aacp)
+These codecs have contractual restrictions that require separate distribution.
+
+
+
+
+
+
+
+
 
