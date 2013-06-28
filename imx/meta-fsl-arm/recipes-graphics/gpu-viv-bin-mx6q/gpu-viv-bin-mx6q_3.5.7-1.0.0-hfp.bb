@@ -13,8 +13,8 @@ SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true \
            file://gc_hal_eglplatform-remove-xlib-undefs.patch \
 "
 
-SRC_URI[md5sum] = "42989b28716f7b5bc3b8dce44941f881"
-SRC_URI[sha256sum] = "90a547f0c5bfe52ac2e0f606ee0bd58d930fc3035c7d4b9ebac2652e87b367b7"
+SRC_URI[md5sum] = "080225adc7aa61af7bfdab17527e62e3"
+SRC_URI[sha256sum] = "b0ece40672933127b774b8ea6c45ef02ba6fc85af4679285e5bc5022502714bc"
 
 PACKAGES =+ "libvivante-dfb-mx6"
 
@@ -36,6 +36,11 @@ do_install () {
     rm ${D}${libdir}/libGL.so
     cp -axr ${S}/usr/include/* ${D}${includedir}
     cp -axr ${S}/opt ${D}
+
+    # FIXME: Remove Wayland contents
+    rm -r ${D}${includedir}/wayland-viv
+    find ${D}${libdir} -name '*-wl.so' -exec rm '{}' ';'
+    rm ${D}${libdir}/*wayland*.so
 
     if [ "${USE_X11}" = "yes" ]; then
         cp -r ${S}/usr/lib/dri ${D}${libdir}
