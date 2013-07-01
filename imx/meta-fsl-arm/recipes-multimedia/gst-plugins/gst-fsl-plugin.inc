@@ -1,21 +1,20 @@
-# Copyright (C) 2011, 2012 Freescale Semiconductor
+# Copyright (C) 2011, 2012, 2013 Freescale Semiconductor
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 DESCRIPTION = "Gstreamer freescale plugins"
 LICENSE = "GPLv2 & LGPLv2 & LGPLv2.1"
 SECTION = "multimedia"
-DEPENDS = "gstreamer gst-plugins-base imx-lib"
+DEPENDS = "gstreamer gst-plugins-base libfslcodec libfslparser virtual/kernel"
+DEPENDS_append_mx5 = " imx-lib"
 INC_PR = "r9"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=59530bdf33659b29e73d4adb9f9f6552 \
                     file://COPYING-LGPL-2;md5=5f30f0716dfdd0d91eb439ebec522ec2 \
                     file://COPYING-LGPL-2.1;md5=fbc093901857fcd118f065f900982c24"
 
-PACKAGE_NAME ?= "${PN}"
+S = "${WORKDIR}/gst-fsl-plugins-${PV}"
 
-S = "${WORKDIR}/${PACKAGE_NAME}-${PV}"
-
-SRC_URI = "${FSL_MIRROR}/${PACKAGE_NAME}-${PV}.tar.gz"
+SRC_URI = "${FSL_MIRROR}/gst-fsl-plugins-${PV}.tar.gz"
 
 inherit autotools pkgconfig
 
@@ -31,6 +30,19 @@ EXTRA_OECONF = "PLATFORM=${PLATFORM} CROSS_ROOT=${PKG_CONFIG_SYSROOT_DIR} --disa
 PACKAGES += "${PN}-libmfwsconf ${PN}-libgplaycore ${PN}-libgstfsl \
              ${PN}-libme ${PN}-libgstbufmeta ${PN}-libmfwba \
              ${PN}-libfwvss ${PN}-gplay"
+
+PACKAGECONFIG ??= ""
+
+# FIXME: Add all features
+# feature from excluded mm packages
+PACKAGECONFIG[ac3] += "--enable-ac3dec,--disable-ac3dec,libfslac3codec"
+# feature from special mm packages
+PACKAGECONFIG[aacp] += "--enable-aacpdec,--disable-aacpdec,libfslaacpcodec"
+MSDEPENDS = "libfslmsparser libfslmscodec"
+PACKAGECONFIG[wma10dec] +="--enable-wma10dec,--disable-wma10dec,${MSDEPENDS}"
+PACKAGECONFIG[wma8enc] +="--enable-wma8enc,--disable-wma8enc,${MSDEPENDS}"
+PACKAGECONFIG[wmv9mpdec] +="--enable-wmv9mpdec,--disable-wmv9mpdec,${MSDEPENDS}"
+PACKAGECONFIG[wmv78dec] +="--enable-wmv78dec,--disable-wmv78dec,${MSDEPENDS}"
 
 FILES_${PN} = "${libdir}/gstreamer-0.10/*.so ${datadir}"
 FILES_${PN}-dbg += "${libdir}/gstreamer-0.10/.debug"
