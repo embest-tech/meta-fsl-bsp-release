@@ -99,8 +99,9 @@ Restricted Codecs
 Some codecs have recipes in the layer but binaries are not provided in the Yocto fetch system (microsoft, ac3 and aacp)
 These codecs have contractual restrictions that require separate distribution.
 
-Manufacturing Tool
-------------------
-A build for the manufacturing tool is not provided in 3.5.7-1.0.0 but the manufacturing tool from
-3.0.35-4.0.0 can be used instead.  However the 3.0.35-4.0.0 profile must be updated to support the device tree DTB
-and some block partition changes to comply with the L3.5.7 kernel
+End User License Agreement
+--------------------------
+During the Freescale Yocto Community BSP setup-environment process, the Freescale i.MX End User License Agreement (EULA) 
+is displayed. To continue, users must agree to the conditions of this license. The agreement to the terms allows the 
+Yocto build to untar packages from the Freescale mirror. Please read this license agreement carefully during the 
+setup process because, once accepted, all further work in the Yocto environment is tied to this accepted agreement.
