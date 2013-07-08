@@ -56,7 +56,9 @@ Build Configurations
 ---------------------
 Freescale has created new images to support multiple graphics back ends.  
 This is an alpha release so new back ends such as directfb and fb have not been fully tested and probably need
-additional community support for package groups.  Below is the setup for all the backends with the new image recipes
+additional community support for package groups.  Below is the setup for all the backends with the new image recipes.
+
+Wayland binaries are provided but image builds are not supported in this release.
 
 Building X11
 ------------
@@ -73,7 +75,6 @@ different binaries for each backend, it is recommended to build a clean system t
 
 $: MACHINE=<machine name>. ./fsl-setup-release.sh -b <build directory> -e fb
 $: bitbake fsl-image-fb
-
 
 Building Direct FB (DFB)
 ---------------------------
@@ -98,11 +99,8 @@ Restricted Codecs
 Some codecs have recipes in the layer but binaries are not provided in the Yocto fetch system (microsoft, ac3 and aacp)
 These codecs have contractual restrictions that require separate distribution.
 
-
-
-
-
-
-
-
-
+Manufacturing Tool
+------------------
+A build for the manufacturing tool is not provided in 3.5.7-1.0.0 but the manufacturing tool from
+3.0.35-4.0.0 can be used instead.  However the 3.0.35-4.0.0 profile must be updated to support the device tree DTB
+and some block partition changes to comply with the L3.5.7 kernel
