@@ -11,8 +11,8 @@ inherit fsl-eula-unpack gettext gconf autotools pkgconfig
 PACKAGE_NAME = "gst-plugins-gl"
 
 SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true"
-SRC_URI[md5sum] = "8995cf01b4659d155a0724a0f8ce4e5c"
-SRC_URI[sha256sum] = "47ea3301fde72c7864158de93a66d2a26761d0d8a5b29e866dda6afe4b91be8e"
+SRC_URI[md5sum] = "6d1ed86539858ba8698cf169192b70a2"
+SRC_URI[sha256sum] = "97fb1ae3a4fd724a41365acf5e6c9c087da365869b554b41c2e4248a245ac979"
 
 acpaths = "-I ${S}/common/m4 -I ${S}/m4"
 
