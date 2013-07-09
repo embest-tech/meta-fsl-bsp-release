@@ -14,8 +14,8 @@ LIC_FILES_CHKSUM = "file://src/vivante_fbdev/vivante.h;endline=19;md5=641ac6e6d0
 SRC_URI = "${FSL_MIRROR}/xserver-xorg-video-imx-viv-${PV}.tar.gz \
            file://Makefile-fix-cross-compile.patch"
 
-SRC_URI[md5sum] = "5f13f95c0457ad0dfa84d468c2b5f53e"
-SRC_URI[sha256sum] = "41adc2976441e7b252d796ba434301a11495fde5b46b94a33dac467d27951d84"
+SRC_URI[md5sum] = "e27c5e6e823502d06672808b92f1e008"
+SRC_URI[sha256sum] = "ae4fc547afb6b0e704c191c25c4b6c2752ed04b4ed60c2eb996abafcbc76f004"
 
 S = "${WORKDIR}/xserver-xorg-video-imx-viv-${PV}/EXA/"
 
