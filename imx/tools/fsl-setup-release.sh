@@ -23,7 +23,8 @@ CWD=`pwd`
 exit_message ()
 {
    echo "To return to this build environment later please run:"
-   echo "    source setup-environment <build-dir>"
+   echo "    source setup-environment <build_dir>" 
+
 }
 
 usage()
@@ -32,9 +33,8 @@ usage()
     Optional parameters: [-b build-dir] [-e back-end] [-h]"
 echo "
     * [-b build-dir]: Build directory, if unspecified script uses 'build' as output directory
-    * [-e back-end]: Options are 'fb', 'dfb', weston'. If unspecified, default to X11
+    * [-e back-end]: Options are 'fb', 'dfb', 'x11'. If unspecified, defaults to X11
     * [-h]: help
-
 "
 }
 
@@ -55,15 +55,20 @@ while getopts "k:r:t:b:e:gh" fsl_setup_flag
 do
     case $fsl_setup_flag in
         b) BUILD_DIR="$OPTARG";
+           echo -e "\n Build directory is " $BUILD_DIR
            ;;
         e)
             BACKEND="$OPTARG"
             if [ "$BACKEND" = "fb" ]; then
                 DIST_FEATURES="alsa argp bluetooth ext2 irda largefile pcmcia usbgadget usbhost wifi xattr nfs zeroconf pci 3g \${DISTRO_FEATURES_LIBC}"
+                 echo -e "\n Using FB backend with FB DIST_FEATURES to override poky X11 DIST FEATURES"
             elif [ "$BACKEND" = "dfb" ]; then
                 DIST_FEATURES="alsa argp bluetooth ext2 irda largefile pcmcia usbgadget usbhost wifi xattr nfs zeroconf pci 3g directfb \${DISTRO_FEATURES_LIBC}"
+                 echo -e "\n Using DirectFB backend with DirectFB DIST_FEATURES to override poky X11 DIST FEATURES"
+            elif [ "$BACKEND" = "x11" ]; then
+                 echo -e  "\n Using X11 backend with poky DIST_FEATURES"
             else
-                echo -e "\nWRONG BACKEND SPECIFIED"
+                echo -e "\n Invalid backend specified - use fb, dfb or x11"
                 fsl_setup_error='true'
             fi
            ;;
@@ -84,8 +89,9 @@ if [ -z "$BUILD_DIR" ]; then
     BUILD_DIR='build'
 fi
 if [ ! -e $BUILD_DIR/conf/local.conf ]; then
-    echo "Run the 'setup-environment' script before running this script"
-    clean_up && return 1
+    echo -e "\n ERROR - No build directory is set yet. Run the 'setup-environment' script before running this script to create " $BUILD_DIR
+    echo -e "\n"
+    return 1
 fi
 
 # Run this part only the first time the script is executed
@@ -105,6 +111,11 @@ if [ ! -e $BUILD_DIR/conf/local.conf.org ]; then
         echo "DISTRO_FEATURES = \"$DIST_FEATURES\"" >> $BUILD_DIR/conf/local.conf
         echo >> $BUILD_DIR/conf/local.conf
     fi
+else 
+    echo -e "\n Existing build already configured - to reconfigure - delete " $BUILD_DIR
+    echo -e "\n Rerun setup-environment then rerun fsl-setup-release.sh"
+    echo -e "\n Configure multiple backends with different directory names like build-fb, build-dfb"
+    return 1
 fi
 
 
