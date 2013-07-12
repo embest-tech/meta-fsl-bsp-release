@@ -51,7 +51,7 @@ $: cp fsl-yocto-release-manifest.xml .repo
 $: cd .repo
 $: cp manifest.xml manifest-community.xml
 $: rm manifest.xml
-$: ln -s fsl-yocto-release-manifest.xml manifest.xml
+$: cp fsl-yocto-release-manifest.xml manifest.xml
 $: cd ..
 
 
