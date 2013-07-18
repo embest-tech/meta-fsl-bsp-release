@@ -21,9 +21,11 @@ S = "${WORKDIR}/xserver-xorg-video-imx-viv-${PV}/EXA/"
 
 CC += "-I${WORKDIR}/xserver-xorg-video-imx-viv-${PV}/DRI_1.10.4/src"
 
+USE_HFP = "${@base_contains("TUNE_FEATURES", "callconvention-hard", "1", "0", d)}"
+
 base_do_compile () {
 
-	make -C src/ -f makefile.linux BUILD_HARD_VFP=1 YOCTO=1 BUSID_HAS_NUMBER=1 sysroot=${STAGING_DIR_HOST} || die "make failed"
+	make -C src/ -f makefile.linux BUILD_HARD_VFP=${USE_HFP} YOCTO=1 BUSID_HAS_NUMBER=1 sysroot=${STAGING_DIR_HOST} || die "make failed"
 }
 
 do_install () {
