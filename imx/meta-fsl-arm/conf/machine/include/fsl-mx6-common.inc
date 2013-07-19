@@ -1,6 +1,6 @@
 # Provides the i.MX mx6 Freescale board common settings
 
-DEFAULTTUNE_mx6 = "cortexa9hf-neon"
+DEFAULTTUNE_mx6 ?= "cortexa9hf-neon"
 
 ## Note the imx-base appends vpu firmware so not including it here
 ## Note sdma firmware from firmware-imx is not needed on mx6
