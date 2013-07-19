@@ -13,8 +13,8 @@ SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true \
            file://gc_hal_eglplatform-remove-xlib-undefs.patch \
 "
 
-SRC_URI[md5sum] = "104136b6f281446d8a7bfb892550e930"
-SRC_URI[sha256sum] = "18148fe6ba20439aae41083a60073ce0ebf57d228a911cfd2bcf5b7c6e424866"
+SRC_URI[md5sum] = "ccd12ee3aa6eaeb16e1073ed592b528a"
+SRC_URI[sha256sum] = "4fe88e2b41bcaffb4d25a34fc3a0ffedc00dcd71cf6ecd1437a38a48fdc911fe"
 
 PACKAGES =+ "libvivante-dfb-mx6"
 
