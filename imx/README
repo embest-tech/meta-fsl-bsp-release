@@ -116,7 +116,11 @@ Hardware Floating Point
 configurations and in the layer.conf (because some machine files exist in community meta-fsl-arm.
 DEFAULTTUNE_mx6 = "cortexa9hf-neon
 
+To build as softare floating point add the following to local.conf
+DEFAULTTUNE_mx6 = "cortexa9-neon"
+
 Note we also provide some binaries with a software floating point version which we switch basis on FP_TAG in layer.conf.
+This release was only tested for hardware floating point.
 
 Restricted Codecs
 -----------------
