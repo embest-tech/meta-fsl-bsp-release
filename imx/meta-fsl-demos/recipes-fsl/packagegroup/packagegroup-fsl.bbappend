@@ -27,3 +27,8 @@ RDEPENDS_${PN}-tools-testapps = " \
     canutils \
     bluez4 \
 "
+
+SOC_TOOLS_TESTAPPS_mx6 += " \
+    hdcp-app \
+"
+
