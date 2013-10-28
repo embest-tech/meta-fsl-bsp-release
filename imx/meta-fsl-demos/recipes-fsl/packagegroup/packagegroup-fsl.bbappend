@@ -27,6 +27,7 @@ RDEPENDS_${PN}-tools-testapps = " \
     imx-kobs \
     canutils \
     bluez4 \
+    obexftp \
 "
 
 SOC_TOOLS_TESTAPPS_mx6 += " \
