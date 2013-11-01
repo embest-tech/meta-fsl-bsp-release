@@ -35,3 +35,8 @@ SOC_TOOLS_TESTAPPS_mx6 += " \
     hdcp-app \
 "
 
+# only add in cryptodev for non solo-lite mx6 devices
+SOC_TOOLS_TESTAPPS_mx6q += "cyptodev"
+SOC_TOOLS_TESTAPPS_mx6dl += "cryptodev"
+SOC_TOOLS_TESTAPPS_mx6s += "cryptodev"
+
