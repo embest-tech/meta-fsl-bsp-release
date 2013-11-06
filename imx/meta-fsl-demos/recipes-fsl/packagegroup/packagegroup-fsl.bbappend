@@ -33,5 +33,6 @@ RDEPENDS_${PN}-tools-testapps = " \
 
 SOC_TOOLS_TESTAPPS_mx6 += " \
     hdcp-app \
+    iw \
+    can-utils \
 "
-
