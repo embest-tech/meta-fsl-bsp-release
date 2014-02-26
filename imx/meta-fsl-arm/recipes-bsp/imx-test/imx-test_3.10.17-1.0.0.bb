@@ -1,26 +1,13 @@
-# Copyright (C) 2013 Freescale Semiconductor
+# Copyright (C) 2013, 2014 Freescale Semiconductor
 
-require recipes-bsp/imx-test/imx-test.inc
+include imx-test.inc
 
-SRC_URI = "${FSL_MIRROR}/${PN}-${PV}_beta.tar.gz "
+SRC_URI_append_mx5 = " file://revert_epdc_hdr_change.patch \
+                       file://clocks.sh"
+SRC_URI_append_mxs = " file://revert_epdc_hdr_change.patch \
+                       file://clocks.sh"
 
-DEPENDS_mx28   = "virtual/kernel"
+SRC_URI[md5sum] = "3e066a84878b93ee52e54a040a7b2b61"
+SRC_URI[sha256sum] = "21bedcbd707e392d8558ec5a73095ca15b4c95ab66deabb06876aaf3f8dac2c4"
 
-# use clocks on older kernels only - also fix imx-test issue with hdr name change
-SRC_URI_append_mx5 = "  file://clocks.sh "
-SRC_URI_append_mx28 = " file://clocks.sh "
-
-PE = "1"
-
-S="${WORKDIR}/${PN}-${PV}_beta"
-
-SRC_URI[md5sum] = "fd3de6e882a7b5425853083ec8d4951e"
-SRC_URI[sha256sum] = "1e86cfe800fbf2db2a52ce0155ab2d2ba70913a30974b3f66879198eaf9da21b"
-
-COMPATIBLE_MACHINE = "(mx6|mx5|mx28)"
-
-do_install_mx6() {
-        install -d ${D}/unit_tests
-        install -m 755 test-utils.sh ${D}/unit_tests/test-utils.sh
-        install -m 755 ${S}/platform/${PLATFORM}/* ${D}/unit_tests/
-}
+COMPATIBLE_MACHINE = "(mxs|mx5|mx6)"

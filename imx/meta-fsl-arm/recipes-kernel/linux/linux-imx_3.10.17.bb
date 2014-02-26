@@ -1,14 +1,16 @@
-# Copyright (C) 2013 Freescale Semiconductor
+# Copyright (C) 2013-14 Freescale Semiconductor
 # Released under the MIT license (see COPYING.MIT for the terms)
 
 require recipes-kernel/linux/linux-imx.inc
 require recipes-kernel/linux/linux-dtb.inc
 
+DEPENDS += "lzop-native bc-native"
+
 COMPATIBLE_MACHINE = "(mx6)"
 
-SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git;branch=imx_3.10.17"
+SRC_URI = "git://${FSL_ARM_GIT_SERVER}/linux-2.6-imx.git;protocol=git;branch=imx_3.10.17_1.0.0_ga"
 
-SRCREV = "${AUTOREV}"
+SRCREV = "180e5249943950ef2b917414ba677a52f3d68e19"
 
 LOCALVERSION = "-1.0.0_ga"
 
