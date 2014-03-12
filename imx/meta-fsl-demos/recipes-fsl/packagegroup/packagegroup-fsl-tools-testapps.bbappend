@@ -41,7 +41,7 @@ RDEPENDS_${PN}_mx6 = " \
 #    alsa-tools 
 
 SOC_TOOLS_TESTAPPS_mx6 += " \
-    hdcp-app \
+    imx-test-hdcp \
     imx-kobs \
     vlan \
     cryptodev \
