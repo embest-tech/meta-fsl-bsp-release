@@ -44,7 +44,7 @@ RDEPENDS_${PN}-tools-testapps_mx6 = " \
 "
 
 SOC_TOOLS_TESTAPPS_mx6 += " \
-    hdcp-app \
+    imx-test-hdcp \
     imx-kobs \
     vlan \
     cryptodev \
