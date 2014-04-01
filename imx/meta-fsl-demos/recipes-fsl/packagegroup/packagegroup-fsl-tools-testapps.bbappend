@@ -8,10 +8,6 @@ RDEPENDS_${PN}-fslcodec-testapps_mx6 += " \
     libfslcodec-testapps \
 "
 
-RDEPENDS_${PN}-gstreamer += " \
-    ${PN}-fslcodec-testapps \
-"
-
 ALLOW_EMPTY_${PN}-fslcodec-testapps_mx6 = "1"
 
 RDEPENDS_${PN}_mx6 = " \
@@ -48,5 +44,6 @@ SOC_TOOLS_TESTAPPS_mx6 += " \
     imx-kobs \
     vlan \
     cryptodev \
+    ${PN}-fslcodec-testapps \
 "
 
