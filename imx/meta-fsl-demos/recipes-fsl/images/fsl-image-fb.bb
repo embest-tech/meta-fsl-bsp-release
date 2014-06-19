@@ -27,6 +27,7 @@ IMAGE_INSTALL += " \
     ${SOC_IMAGE_INSTALL} \
     cpufrequtils \
     nano \
+    packagegroup-fsl-gstreamer \
     packagegroup-fsl-tools-testapps \
     packagegroup-fsl-tools-benchmark \
     "

@@ -21,6 +21,8 @@ RDEPENDS_${PN}-tools-testapps_mx6 = " \
     alsa-tools \
     dosfstools \
     evtest \
+    tslib-calibrate \
+    tslib-tests	\
     e2fsprogs-mke2fs \
     fsl-rc-local \
     gst-plugins-base-tcp \
