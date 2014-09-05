@@ -43,6 +43,8 @@ RDEPENDS_${PN}-tools-testapps_mx6 = " \
     linuxptp \
     iw \
     can-utils \
+	ppp \
+	pciutils \
 "
 
 SOC_TOOLS_TESTAPPS_mx6 += " \
